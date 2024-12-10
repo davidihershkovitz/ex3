@@ -153,11 +153,11 @@ void provideDailyStats(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int 
     // Loop until the user provides a valid day
     while (1) {
         printf("What day would you like to analyze?\n");
-        if (scanf("%d", &day) == 1 && day >= 0 && day < DAYS_IN_YEAR) {
+        if (scanf("%d", &day) == 1 && day > 0 && day <= DAYS_IN_YEAR) {
             // Check if there is any data for the given day
             int hasData = 0;
             for (int brand = 0; brand < NUM_OF_BRANDS; brand++) {
-                if (days[brand] > day && cube[day][brand][0] != -1) {
+                if (days[brand] >= day && cube[day-1][brand][0] != -1) {
                     hasData = 1;
                     break;
                 }
@@ -177,8 +177,8 @@ void provideDailyStats(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int 
             // Calculate total sales and track sales by brand and type
             for (int brand = 0; brand < NUM_OF_BRANDS; brand++) {
                 for (int type = 0; type < NUM_OF_TYPES; type++) {
-                    if (cube[day][brand][type] != -1) {
-                        int sales = cube[day][brand][type];
+                    if (cube[day-1][brand][type] != -1) {
+                        int sales = cube[day-1][brand][type];
                         totalSales += sales;
                         brandSales[brand] += sales;
                         typeSales[type] += sales;
@@ -225,17 +225,10 @@ void provideDailyStats(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int 
         }
     }
 }
-
-
-
-
-
-
-
 // Function to print all sales data for all days in the desired format
 void printAllData(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int days[NUM_OF_BRANDS]) {
     // Print the starting border with stars
-    printf("*****************************************\n\n\n");
+    printf("*****************************************\n");
 
     // Loop through all brands
     for (int brand = 0; brand < NUM_OF_BRANDS; brand++) {
@@ -258,7 +251,7 @@ void printAllData(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int days[
     }
 
     // Print the ending border with stars
-    printf("\n\n*****************************************\n");
+    printf("*****************************************\n");
 }
 void provideOverallInsights(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int days[NUM_OF_BRANDS]) {
     int totalSalesForBrand[NUM_OF_BRANDS] = {0}; // Total sales for each brand
