@@ -122,7 +122,6 @@ void populateDayOfSales(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int
                 break; // Exit the loop for invalid sales input
             }
         }
-        clearInputBuffer(); // Ensure no leftover input
 
         // Mark the brand as completed
         completedBrands[brand] = 1;
@@ -384,9 +383,6 @@ int main() {
             continue; // Skip to the next iteration
         }
 
-        // Clear the input buffer
-        clearInputBuffer();
-
         // Handle different cases based on user input
         switch (choice) {
         case addOne:
@@ -413,6 +409,7 @@ int main() {
             break;
         default:
             printf("Invalid input\n");
+            clearInputBuffer();
         }
     }
     return 0;
