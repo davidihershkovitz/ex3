@@ -376,47 +376,43 @@ int main() {
     int days[NUM_OF_BRANDS] = {0};
     int choice;
 
-    // Initialize the cube to -1
     initializeCube(cube);
 
-    // Menu loop
     do {
         printMenu();
 
-        // Read and validate input
         if (scanf("%d", &choice) != 1) {
-            clearInputBuffer(); // Clear invalid input
+            clearInputBuffer();
             printf("Invalid input\n");
-            continue; // Restart the loop
+            continue;
         }
 
-        // Process valid input
         switch (choice) {
-        case 1:
+        case addOne:
             enterDataForBrandDaily(cube, days);
             break;
-        case 2:
+        case addAll:
             populateDayOfSales(cube, days);
             break;
-        case 3:
+        case stats:
             provideDailyStats(cube, days);
             break;
-        case 4:
+        case print:
             printAllData(cube, days);
             break;
-        case 5:
+        case insights:
             provideOverallInsights(cube, days);
             break;
-        case 6:
+        case deltas:
             provideAverageDeltaMetrics(cube, days);
             break;
-        case 7:
+        case done:
             printf("Goodbye!\n");
             break;
         default:
             printf("Invalid input\n");
         }
-    } while (choice != 7);
+    } while (choice != done);
 
     return 0;
 }
