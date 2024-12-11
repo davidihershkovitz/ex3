@@ -65,7 +65,7 @@ void populateDayOfSales(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int
                 printf(" %s", brands[i]);
             }
         }
-        printf(".\nPlease complete the data:\n");
+        printf("\nPlease complete the data\n");
 
         int brand;
 
