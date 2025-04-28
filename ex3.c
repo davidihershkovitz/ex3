@@ -284,7 +284,7 @@ void provideOverallInsights(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES],
 // Function to calculate the delta for a given brand
 double calculateDelta(int cube[DAYS_IN_YEAR][NUM_OF_BRANDS][NUM_OF_TYPES], int brand, int days[NUM_OF_BRANDS])
 {
-    int totalDelta = 0; // To accumulate the deltas
+    int totalDelta = 0;
     int validDays = 0; // Count days with sales data
 
     // Loop through all the days for the given brand
